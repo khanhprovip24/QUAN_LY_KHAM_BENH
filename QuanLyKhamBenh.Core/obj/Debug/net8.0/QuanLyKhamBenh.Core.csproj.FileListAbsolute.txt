@@ -1,0 +1,14 @@
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\bin\Debug\net8.0\QuanLyKhamBenh.Core.deps.json
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\bin\Debug\net8.0\QuanLyKhamBenh.Core.runtimeconfig.json
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\bin\Debug\net8.0\QuanLyKhamBenh.Core.dll
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\bin\Debug\net8.0\QuanLyKhamBenh.Core.pdb
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\QuanLyKhamBenh.Core.csproj.AssemblyReference.cache
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\QuanLyKhamBenh.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\QuanLyKhamBenh.Core.AssemblyInfoInputs.cache
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\QuanLyKhamBenh.Core.AssemblyInfo.cs
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\QuanLyKhamBenh.Core.csproj.CoreCompileInputs.cache
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\QuanLyKhamBenh.Core.dll
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\refint\QuanLyKhamBenh.Core.dll
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\QuanLyKhamBenh.Core.pdb
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\QuanLyKhamBenh.Core.genruntimeconfig.cache
+C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Core\obj\Debug\net8.0\ref\QuanLyKhamBenh.Core.dll
