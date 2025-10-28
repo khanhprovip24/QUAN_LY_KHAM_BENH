@@ -1,4 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.EntityFrameworkCore;
 using QuanLyKhamBenh.Core.Data; // Thư mục Data bạn vừa tạo
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +12,27 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddDbContext<QuanLyKhamBenhDBContext>(options =>
 	options.UseSqlServer(connectionString)
 );
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+	.AddJwtBearer(options =>
+	{
+		var jwtKey = builder.Configuration["Jwt:Key"];
+		if (string.IsNullOrEmpty(jwtKey))
+		{
+			throw new InvalidOperationException("Chưa cài đặt JWT Key trong appsettings.json");
+		}
+		options.TokenValidationParameters = new TokenValidationParameters
+		{
+			ValidateIssuer = true,
+			ValidateAudience = true,
+			ValidateLifetime = true,
+			ValidateIssuerSigningKey = true,
+			ValidIssuer = builder.Configuration["Jwt:Issuer"],
+			ValidAudience = builder.Configuration["Jwt:Audience"],
+			IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey))
+		};
+	});
+
+builder.Services.AddAuthorization();
 
 // Add services to the container.
 
@@ -18,8 +42,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-
-// Configure the HTTP request pipeline.
+app.UseAuthentication(); // Bật xác thực
+app.UseAuthorization(); // Bật phân quyền
+						// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

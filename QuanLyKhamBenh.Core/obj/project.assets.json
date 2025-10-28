@@ -4728,11 +4728,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj",
+      "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj",
       "projectName": "QuanLyKhamBenh.Core",
-      "projectPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj",
+      "projectPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj",
       "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\obj\\",
+      "outputPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

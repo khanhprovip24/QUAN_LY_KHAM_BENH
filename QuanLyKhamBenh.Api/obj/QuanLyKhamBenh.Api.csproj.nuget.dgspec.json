@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj": {}
+    "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj": {
+    "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj",
         "projectName": "QuanLyKhamBenh.Api",
-        "projectPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj",
+        "projectPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -34,8 +34,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj": {
-                "projectPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj"
+              "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj": {
+                "projectPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj"
               }
             }
           }
@@ -56,6 +56,14 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
             "Microsoft.EntityFrameworkCore.Design": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
@@ -100,14 +108,14 @@
         }
       }
     },
-    "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj": {
+    "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj",
+        "projectUniqueName": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj",
         "projectName": "QuanLyKhamBenh.Core",
-        "projectPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj",
+        "projectPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\QuanLyKhamBenh.Core.csproj",
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh.Api\\QuanLyKhamBenh.Core\\obj\\",
+        "outputPath": "C:\\Users\\DELL\\source\\repos\\QuanLyKhamBenh\\QuanLyKhamBenh.Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
