@@ -3,16 +3,19 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - QuanLyKhamBenh.Web</title>
+    <title>@ViewData["Title"] - Phòng Khám Đa Khoa</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/QuanLyKhamBenh.Web.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">QuanLyKhamBenh.Web</a>
+                <a class="navbar-brand fw-bold" asp-area="" asp-page="/Index">HealthCare</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -20,12 +23,34 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Trang chủ</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                        </li>
+
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/ManageDoctors">Quản lý Bác sĩ</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Admin/ManagePatients">Quản lý Bệnh nhân</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Doctor/Appointments">Lịch hẹn</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Patient/BookAppointment">Đặt lịch</a></li>
+                            <li class="nav-item"><a class="nav-link text-dark" asp-page="/Patient/AppointmentHistory">Lịch sử khám</a></li>
+                        }
                     </ul>
+                    
+                    <div class="navbar-nav align-items-center">
+                        @if (User.Identity?.IsAuthenticated == true)
+                        {
+                            <span class="navbar-text me-3">
+                                Xin chào, <strong>@User.Identity.Name!</strong>
+                            </span>
+                            <form method="post" asp-page="/Logout">
+                                <button type="submit" class="btn btn-outline-danger btn-sm">Đăng xuất</button>
+                            </form>
+                        }
+                        else
+                        {
+                            <a class="btn btn-primary btn-sm" asp-area="" asp-page="/Login">Đăng nhập</a>
+                        }
+                    </div>
                 </div>
             </div>
         </nav>
@@ -38,7 +63,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2025 - QuanLyKhamBenh.Web - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            &copy; 2024 - HealthCare - <a asp-area="" asp-page="/Privacy">Chính sách bảo mật</a>
         </div>
     </footer>
 

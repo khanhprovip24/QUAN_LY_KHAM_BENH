@@ -1,4 +1,118 @@
 ﻿@page
 @model QuanLyKhamBenh.Web.Pages.IndexModel
 @{
+    ViewData["Title"] = "Trang Chủ";
+}
+<style>
+    .dashboard-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+        gap: 1.5rem;
+    }
+
+    .dashboard-card {
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.2s ease-in-out;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        text-decoration: none;
+        color: #212529;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .dashboard-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0, 90, 158, 0.1);
+            color: #005a9e;
+            border-color: #005a9e;
+        }
+
+    .card-icon {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        line-height: 1;
+    }
+
+    .card-title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+    }
+
+    .card-description {
+        font-size: 0.9rem;
+        color: #6c757d;
+    }
+</style>
+
+<div class="text-center mb-5">
+    <h1 class="display-4">@Model.WelcomeMessage</h1>
+    <p class="lead text-muted">Hệ thống quản lý phòng khám thông minh, tiện lợi.</p>
+</div>
+
+@if (User.Identity?.IsAuthenticated == true)
+{
+    <div class="dashboard-grid">
+        @* Chức năng Admin *@
+        <a asp-page="/Admin/ManageDoctors" class="dashboard-card">
+            <div class="card-icon">👨‍⚕️</div>
+            <div class="card-title">Quản lý Bác sĩ</div>
+            <div class="card-description">Thêm, sửa, xóa thông tin bác sĩ.</div>
+        </a>
+        <a asp-page="/Admin/ManagePatients" class="dashboard-card">
+            <div class="card-icon">👥</div>
+            <div class="card-title">Quản lý Bệnh nhân</div>
+            <div class="card-description">Xem và quản lý tài khoản bệnh nhân.</div>
+        </a>
+        <a asp-page="/Admin/Statistics" class="dashboard-card">
+            <div class="card-icon">📊</div>
+            <div class="card-title">Thống kê</div>
+            <div class="card-description">Xem báo cáo và số liệu hoạt động.</div>
+        </a>
+
+        @* Chức năng Doctor *@
+        <a asp-page="/Doctor/Appointments" class="dashboard-card">
+            <div class="card-icon">🗓️</div>
+            <div class="card-title">Lịch hẹn của tôi</div>
+            <div class="card-description">Xem và quản lý các cuộc hẹn.</div>
+        </a>
+        <a asp-page="/Doctor/Patients" class="dashboard-card">
+            <div class="card-icon">📋</div>
+            <div class="card-title">Hồ sơ Bệnh nhân</div>
+            <div class="card-description">Tra cứu lịch sử khám và đơn thuốc.</div>
+        </a>
+
+        @* Chức năng Patient *@
+        <a asp-page="/Patient/BookAppointment" class="dashboard-card">
+            <div class="card-icon">➕</div>
+            <div class="card-title">Đặt lịch hẹn mới</div>
+            <div class="card-description">Tìm bác sĩ và đặt lịch khám.</div>
+        </a>
+        <a asp-page="/Patient/AppointmentHistory" class="dashboard-card">
+            <div class="card-icon">📜</div>
+            <div class="card-title">Lịch sử khám bệnh</div>
+            <div class="card-description">Xem lại các cuộc hẹn và đơn thuốc.</div>
+        </a>
+        <a asp-page="/Patient/Notifications" class="dashboard-card">
+            <div class="card-icon">🔔</div>
+            <div class="card-title">Thông báo</div>
+            <div class="card-description">Kiểm tra lịch tái khám và tin nhắn.</div>
+        </a>
+    </div>
+}
+else
+{
+    <div class="text-center p-5 mb-4 bg-light rounded-3">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold">Chào mừng đến với HealthCare</h1>
+            <p class="col-md-8 fs-4 mx-auto">Vui lòng đăng nhập để đặt lịch hẹn, xem hồ sơ bệnh án và nhận được sự chăm sóc tốt nhất.</p>
+            <a class="btn btn-primary btn-lg" asp-page="/Login">Đăng nhập ngay</a>
+        </div>
+    </div>
 }

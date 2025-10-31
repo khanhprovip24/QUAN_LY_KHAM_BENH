@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chỉnh Sửa Lịch Khám - UMBRELLA CORP</title>
+    <!-- Tích hợp Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Màu nền xám nhẹ */
+        }
+        /* Tô màu chữ đặc biệt như trong hình */
+        .text-highlight-red {
+            color: #EF4444; /* Mã màu đỏ */
+        }
+        .text-highlight-gray {
+            color: #6B7280; /* Mã màu xám */
+        }
+    </style>
+</head>
+<body class="p-6">
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Thứ tự lịch khám</h1>
+
+        <!-- Form tạo/chỉnh sửa -->
+        <div class="bg-white p-8 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold text-gray-800 mb-6 border-b pb-4">Tạo hoặc chỉnh sửa lịch khám</h2>
+            
+            <div class="text-gray-700 space-y-4 mb-8">
+                <p>Để tạo lượt khám cho bệnh nhân, có 2 phương thức như sau:</p>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>Nếu bệnh nhân đến khám trực tiếp, hãy chọn mục <span class="text-highlight-red">nhu cầu khám bệnh</span>, hệ thống sẽ lựa chọn bác sĩ phù hợp để bệnh nhân được khám sớm nhất có thể.</li>
+                    <li>Nếu bệnh nhân đặt khám online và chỉ định bác sĩ thì sẽ được xếp khám với bác sĩ đó.</li>
+                </ol>
+                <p>Trường hợp vừa chọn yêu cầu khám bệnh vừa chỉ định bác sĩ thì hệ thống sẽ ưu tiên xếp khám với bác sĩ đó.</p>
+                <p>Trường hợp vừa bệnh nhân đặt khám online muốn khám sớm nhất có thể, hãy lựa chọn <span class="text-highlight-gray">Để hệ thống lựa chọn</span> và chọn Yêu cầu khám bệnh tương ứng.</p>
+            </div>
+
+            <!-- Phương thức 1 -->
+            <div class="mb-8">
+                <label for="pt1-nhu-cau" class="block text-sm font-medium text-gray-700 mb-2">
+                    <span class="text-highlight-red font-semibold">Phương thức 1:</span> Tạo theo nhu cầu khám bệnh
+                </label>
+                <select id="pt1-nhu-cau" class="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <option>Xét nghiệm máu</option>
+                    <option>Khám sức khỏe tổng quát</option>
+                    <option>Khám chuyên khoa</option>
+                </select>
+            </div>
+
+            <!-- Phương thức 2 -->
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-4">
+                    <span class="text-highlight-red font-semibold">Phương thức 2:</span> Chỉ định bác sĩ
+                </label>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                    <div>
+                        <label for="pt2-chuyen-khoa" class="block text-sm font-medium text-gray-700 mb-1">Chuyên khoa</label>
+                        <select id="pt2-chuyen-khoa" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="" disabled selected>Chọn...</option>
+                            <option value="noi-tong-hop">Nội tổng hợp</option>
+                            <option value="da-lieu">Da liễu</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="pt2-bac-si" class="block text-sm font-medium text-gray-700 mb-1">Bác sĩ</label>
+                        <select id="pt2-bac-si" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option>Để hệ thống lựa chọn</option>
+                            <option>Nguyễn Thị Thu Trang</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="pt2-ngay" class="block text-sm font-medium text-gray-700 mb-1">Ngày</label>
+                        <input type="date" id="pt2-ngay" value="2023-02-15" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="pt2-ma-bhyt" class="block text-sm font-medium text-gray-700 mb-1">Mã thẻ bảo hiểm y tế</Mã>
+                        <input type="text" id="pt2-ma-bhyt" value="2" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    <div>
+                        <label for="pt2-ten-benh-nhan" class="block text-sm font-medium text-gray-700 mb-1">Tên bệnh nhân</label>
+                        <input type="text" id="pt2-ten-benh-nhan" value="PhongKaster" class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

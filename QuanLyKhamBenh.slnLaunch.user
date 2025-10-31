@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "QuanLyKhamBenh.Api\\QuanLyKhamBenh.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "QuanLyKhamBenh.Web\\QuanLyKhamBenh.Web.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

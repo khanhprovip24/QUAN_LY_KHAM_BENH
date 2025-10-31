@@ -1,0 +1,155 @@
+    <div class="max-w-7xl mx-auto">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6">Dashboard</h1>
+
+        <!-- Thẻ thống kê (Stat Cards) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 1: Bác sĩ -->
+            <div class="bg-blue-600 text-white p-6 rounded-xl shadow-lg flex flex-col justify-between h-48">
+                <div>
+                    <h3 class="text-3xl font-bold">5</h3>
+                    <p class="text-blue-100">Bác sĩ</p>
+                </div>
+                <div class="h-16">
+                    <canvas id="chartDoctors"></canvas>
+                </div>
+            </div>
+
+            <!-- Card 2: Bệnh nhân hôm nay -->
+            <div class="bg-cyan-500 text-white p-6 rounded-xl shadow-lg flex flex-col justify-between h-48">
+                <div>
+                    <h3 class="text-3xl font-bold">12</h3>
+                    <p class="text-cyan-100">Số lượt bệnh nhân hôm nay</p>
+                </div>
+                <div class="h-16">
+                    <canvas id="chartPatients"></canvas>
+                </div>
+            </div>
+
+            <!-- Card 3: Tổng lịch hẹn -->
+            <div class="bg-yellow-500 text-white p-6 rounded-xl shadow-lg flex flex-col justify-between h-48">
+                <div>
+                    <h3 class="text-3xl font-bold">11</h3>
+                    <p class="text-yellow-100">Tổng lịch hẹn hôm nay</p>
+                </div>
+                <div class="h-16">
+                    <canvas id="chartAppointments"></canvas>
+                </div>
+            </div>
+
+            <!-- Card 4: Lượt khám bị hủy -->
+            <div class="bg-red-600 text-white p-6 rounded-xl shadow-lg flex flex-col justify-between h-48">
+                <div>
+                    <h3 class="text-3xl font-bold">7</h3>
+                    <p class="text-red-100">Số lượt khám bị hủy</p>
+                </div>
+                <div class="h-16">
+                    <canvas id="chartCancelled"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Biểu đồ chính -->
+        <div class="mt-8 bg-white p-6 rounded-xl shadow-lg">
+            <h2 class="text-xl font-semibold text-gray-800">Số lượng bệnh nhân trong 7 ngày gần nhất</h2>
+            <p class="text-sm text-gray-500 mb-4">Bao gồm cả khám trực tiếp và đặt lịch hẹn</p>
+            <div class="h-80">
+                <canvas id="mainChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- Hàm trợ giúp tạo data cho biểu đồ mini ---
+            const createMiniChartData = (borderColor) => ({
+                labels: ['1', '2', '3', '4', '5', '6', '7'],
+                datasets: [{
+                    data: [Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10],
+                    borderColor: borderColor,
+                    tension: 0.4,
+                    pointRadius: 0
+                }]
+            });
+
+            const miniChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    x: { display: false },
+                    y: { display: false }
+                }
+            };
+
+            // --- Biểu đồ mini ---
+            new Chart(document.getElementById('chartDoctors'), {
+                type: 'line',
+                data: createMiniChartData('rgba(255,255,255,0.7)'),
+                options: miniChartOptions
+            });
+
+            new Chart(document.getElementById('chartPatients'), {
+                type: 'line',
+                data: createMiniChartData('rgba(255,255,255,0.7)'),
+                options: miniChartOptions
+            });
+
+            new Chart(document.getElementById('chartAppointments'), {
+                type: 'line',
+                data: createMiniChartData('rgba(255,255,255,0.7)'),
+                options: miniChartOptions
+            });
+            
+            new Chart(document.getElementById('chartCancelled'), {
+                type: 'bar', // Kiểu bar như trong hình
+                data: {
+                    labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
+                    datasets: [{
+                        data: [Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10, Math.random()*10],
+                        backgroundColor: 'rgba(255,255,255,0.7)',
+                    }]
+                },
+                options: miniChartOptions
+            });
+
+
+            // --- Biểu đồ chính (7 ngày) ---
+            const mainCtx = document.getElementById('mainChart').getContext('2d');
+            new Chart(mainCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2023-02-09', '2023-02-10', '2023-02-11', '2023-02-12', '2023-02-13', '2023-02-14', 'Hôm nay'],
+                    datasets: [{
+                        label: 'Số lượng bệnh nhân',
+                        data: [0, 0, 0, 0, 0, 0, 15], // Giả lập dữ liệu như trong hình
+                        backgroundColor: (context) => {
+                            const colors = ['#E5E7EB', '#E5E7EB', '#E5E7EB', '#E5E7EB', '#E5E7EB', '#E5E7EB', '#10B981'];
+                            return colors[context.dataIndex];
+                        },
+                        borderRadius: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false // Ẩn legend
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 20 // Đặt giới hạn trục y như trong hình
+                        },
+                        x: {
+                            grid: {
+                                display: false // Ẩn lưới trục x
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>

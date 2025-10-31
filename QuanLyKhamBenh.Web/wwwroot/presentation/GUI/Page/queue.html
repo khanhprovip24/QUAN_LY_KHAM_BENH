@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thứ Tự Lượt Khám - Hệ Thống Quản Lý</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .locked-row {
+            background-color: #f0fdf4; /* green-50 */
+            border-left: 4px solid #22c55e; /* green-500 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <div id="queue-page">
+
+    <!-- Header Placeholder -->
+    <div id="header-placeholder"></div>
+
+    <!-- Main Content -->
+    <main class="p-4 sm:p-6 lg:p-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-bold text-gray-900">Danh sách chờ khám</h1>
+                <button id="add-patient-button" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 mr-2"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                    Thêm lượt khám
+                </button>
+            </div>
+            
+            <!-- Bảng danh sách chờ -->
+            <div class="bg-white shadow-md rounded-lg overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">STT</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Họ và Tên</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Bác sĩ chỉ định</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Trạng thái</th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Hành động</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patient-queue-body" class="bg-white divide-y divide-gray-200">
+                        <!-- Dữ liệu sẽ được chèn vào đây bằng JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Modal Thêm lượt khám -->
+    <div id="add-patient-modal" class="fixed inset-0 z-30 flex items-center justify-center p-4 hidden modal-backdrop">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-lg">
+            <div class="p-6 border-b">
+                <h3 class="text-xl font-semibold">Tạo lượt khám mới</h3>
+            </div>
+            <div class="p-6 space-y-4">
+                <div>
+                    <label for="patient-name" class="block text-sm font-medium text-gray-700">Tên bệnh nhân</label>
+                    <input type="text" id="patient-name" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                </div>
+                <div>
+                    <label for="symptoms" class="block text-sm font-medium text-gray-700">Mô tả bệnh lý / Triệu chứng</label>
+                    <select id="symptoms" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option>Khám tổng quát</option>
+                        <option>Khám Tim mạch</option>
+                        <option>Khám Tiêu hóa</option>
+                        <option>Khám Tai-Mũi-Họng</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="doctor-select" class="block text-sm font-medium text-gray-700">Chỉ định bác sĩ (tùy chọn)</label>
+                    <select id="doctor-select" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500">
+                        <option value="auto">Để hệ thống tự động chọn</option>
+                        <option value="Dr. Nguyễn Văn A">BS. Nguyễn Văn A (Tim mạch)</option>
+                        <option value="Dr. Trần Thị B">BS. Trần Thị B (Tiêu hóa)</option>
+                        <option value="Dr. Lê Văn C">BS. Lê Văn C (Tai-Mũi-Họng)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="px-6 py-4 bg-gray-50 flex justify-end space-x-3">
+                <button id="cancel-modal-button" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">Hủy</button>
+                <button id="confirm-add-button" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Placeholder -->
+    <div id="footer-placeholder"></div>
+
+    </div>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const patientQueueBody = document.getElementById('patient-queue-body');
+        const addPatientButton = document.getElementById('add-patient-button');
+        const modal = document.getElementById('add-patient-modal');
+        const cancelModalButton = document.getElementById('cancel-modal-button');
+        const confirmAddButton = document.getElementById('confirm-add-button');
+        const doctorSelect = document.getElementById('doctor-select');
+
+        // --- DỮ LIỆU MẪU (MOCK DATA) ---
+        let patientQueue = [
+            { id: 1, stt: 1, name: 'Nguyễn Thị An', doctor: 'BS. Nguyễn Văn A', status: 'Đang chờ' },
+            { id: 2, stt: 2, name: 'Trần Văn Bình', doctor: 'BS. Trần Thị B', status: 'Đang chờ' },
+            { id: 3, stt: 3, name: 'Lê Thị Cẩm', doctor: 'BS. Nguyễn Văn A', status: 'Đang chờ' },
+            { id: 4, stt: 4, name: 'Phạm Văn Dũng', doctor: 'Hệ thống chỉ định', status: 'Đang chờ' },
+            { id: 5, stt: 5, name: 'Võ Thị Em', doctor: 'BS. Trần Thị B', status: 'Đã khám' },
+            { id: 6, stt: 6, name: 'Hoàng Văn Phúc', doctor: 'BS. Lê Văn C', status: 'Đang chờ' },
+        ];
+
+        // --- HÀM ĐỂ HIỂN THỊ DANH SÁCH ---
+        function renderQueue() {
+            patientQueueBody.innerHTML = '';
+            
+            // Sắp xếp lại theo STT
+            patientQueue.sort((a, b) => a.stt - b.stt);
+
+            patientQueue.forEach((patient, index) => {
+                const row = patientQueueBody.insertRow();
+                row.dataset.id = patient.id;
+
+                // Tô màu xanh cho 2 bệnh nhân đầu tiên và khóa lại
+                if (index < 2 && patient.status === 'Đang chờ') {
+                    row.classList.add('locked-row');
+                }
+
+                let statusClass = '';
+                let statusText = '';
+                switch (patient.status) {
+                    case 'Đã khám':
+                        statusClass = 'bg-gray-200 text-gray-800';
+                        statusText = 'Đã khám';
+                        break;
+                    case 'Đang khám':
+                        statusClass = 'bg-yellow-100 text-yellow-800';
+                        statusText = 'Đang khám';
+                        break;
+                    default:
+                        statusClass = 'bg-blue-100 text-blue-800';
+                        statusText = 'Đang chờ';
+                }
+
+                let actionButtons = '';
+                if (patient.status === 'Đang chờ') {
+                    actionButtons = `
+                        <button class="text-green-600 hover:text-green-900" title="Bắt đầu khám">Bắt đầu</button>
+                        <button class="text-yellow-600 hover:text-yellow-900 ml-4" title="Hủy lượt">Hủy</button>
+                        <button class="text-red-600 hover:text-red-900 ml-4" title="Xóa lượt">Xóa</button>
+                    `;
+                } else if (patient.status === 'Đang khám') {
+                     actionButtons = `<button class="text-blue-600 hover:text-blue-900" title="Hoàn thành khám">Xong</button>`;
+                } else {
+                    actionButtons = `<span class="text-gray-500">Hoàn tất</span>`;
+                }
+
+                row.innerHTML = `
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${patient.stt}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-bold text-gray-800">${patient.name}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">${patient.doctor}</td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm">
+                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${statusClass}">
+                            ${statusText}
+                        </span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                        ${actionButtons}
+                    </td>
+                `;
+            });
+        }
+
+        // --- XỬ LÝ MODAL ---
+        function openModal() {
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            modal.classList.add('hidden');
+        }
+
+        addPatientButton.addEventListener('click', openModal);
+        cancelModalButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Xử lý khi chọn bác sĩ chỉ định
+        doctorSelect.addEventListener('change', () => {
+            if (doctorSelect.value !== 'auto') {
+                const doctorName = doctorSelect.options[doctorSelect.selectedIndex].text;
+                const waitingCount = patientQueue.filter(p => p.doctor === doctorName && p.status === 'Đang chờ').length;
+                
+                // Mô phỏng thông báo
+                if (waitingCount > 1) { // Giả sử > 1 là phải chờ lâu
+                    if (!confirm(`Bác sĩ ${doctorName} hiện có ${waitingCount} bệnh nhân đang chờ. Bạn có sẵn sàng chờ để được đúng bác sĩ mong muốn khám không?`)) {
+                        doctorSelect.value = 'auto'; // Quay lại trường hợp 1
+                    }
+                }
+            }
+        });
+
+        // Xử lý xác nhận thêm bệnh nhân
+        confirmAddButton.addEventListener('click', () => {
+            const patientName = document.getElementById('patient-name').value;
+            if (!patientName) {
+                alert('Vui lòng nhập tên bệnh nhân.');
+                return;
+            }
+
+            let assignedDoctor = 'Hệ thống chỉ định';
+            if (doctorSelect.value !== 'auto') {
+                // Trường hợp 2: Bệnh nhân chỉ định bác sĩ
+                assignedDoctor = doctorSelect.options[doctorSelect.selectedIndex].text;
+            } else {
+                // Trường hợp 1: Hệ thống tự động chọn (Mô phỏng đơn giản)
+                const doctors = ['BS. Nguyễn Văn A', 'BS. Trần Thị B', 'BS. Lê Văn C'];
+                const doctorLoad = doctors.map(doc => ({
+                    name: doc,
+                    count: patientQueue.filter(p => p.doctor === doc && p.status === 'Đang chờ').length
+                }));
+                doctorLoad.sort((a, b) => a.count - b.count);
+                assignedDoctor = doctorLoad[0].name;
+                alert(`Hệ thống đã tự động chỉ định bệnh nhân đến ${assignedDoctor} (ít bệnh nhân chờ nhất).`);
+            }
+
+            const newPatient = {
+                id: Date.now(),
+                stt: patientQueue.length + 1,
+                name: patientName,
+                doctor: assignedDoctor,
+                status: 'Đang chờ'
+            };
+
+            patientQueue.push(newPatient);
+            renderQueue();
+            closeModal();
+            document.getElementById('patient-name').value = ''; // Reset form
+        });
+
+        // --- KHỞI TẠO BAN ĐẦU ---
+        renderQueue();
+
+        // Lưu ý: Chức năng kéo-thả (drag & drop) để sắp xếp lại thứ tự khá phức tạp
+        // và cần thư viện ngoài như SortableJS để thực hiện dễ dàng.
+        // Mã ở trên chưa bao gồm chức năng này.
+    });
+    </script>
+    <script src="../../Js/main.js"></script>
+</body>
+</html>

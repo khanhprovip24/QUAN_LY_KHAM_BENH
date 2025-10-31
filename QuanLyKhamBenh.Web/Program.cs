@@ -9,24 +9,26 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // Đăng ký DbContext với chuỗi kết nối
 builder.Services.AddDbContext<QuanLyKhamBenhDBContext>(options =>
-    options.UseSqlServer(connectionString)
+	options.UseSqlServer(connectionString)
 );
 
-// Cấu hình Authentication
+// Add cookie authentication for the Razor Pages app
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options =>
     {
-        options.LoginPath = "/Login"; // Trang đăng nhập
-        options.LogoutPath = "/Logout"; // Trang đăng xuất
-        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+        options.LoginPath = "/Login";
+        options.ExpireTimeSpan = TimeSpan.FromHours(3); // Mirror the API token lifetime
         options.SlidingExpiration = true;
     });
 
-// Add services to the container.
-builder.Services.AddRazorPages(options =>
+builder.Services.AddAuthorization();
+builder.Services.AddRazorPages();
+
+// Register an HttpClient to call your API (set Api:BaseUrl in appsettings.json)
+builder.Services.AddHttpClient("Api", client =>
 {
-    // Yêu cầu xác thực cho tất cả các trang trừ trang Login
-    options.Conventions.AuthorizeFolder("/", "/Login");
+    var baseUrl = builder.Configuration["Api:BaseUrl"] ?? "https://localhost:5001/";
+    client.BaseAddress = new Uri(baseUrl);
 });
 
 var app = builder.Build();
@@ -34,17 +36,16 @@ var app = builder.Build();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    app.UseHsts();
+	app.UseExceptionHandler("/Error");
+	app.UseHsts();
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
+app.UseStaticFiles(); // Đảm bảo bạn có dòng này.
 
 app.UseRouting();
 
-// Thêm Authentication và Authorization middleware
-app.UseAuthentication();
+app.UseAuthentication(); // Đảm bảo có dòng này trước UseAuthorization
 app.UseAuthorization();
 
 app.MapRazorPages();

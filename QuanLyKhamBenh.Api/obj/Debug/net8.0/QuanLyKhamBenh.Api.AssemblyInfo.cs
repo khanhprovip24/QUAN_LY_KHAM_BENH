@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("QuanLyKhamBenh.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2071921e339fdd19bf9cbc7dd6abb075b27428ed")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ab2db6f93a1187f3975e8f03dfdcc066dce9bfb7")]
 [assembly: System.Reflection.AssemblyProductAttribute("QuanLyKhamBenh.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("QuanLyKhamBenh.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

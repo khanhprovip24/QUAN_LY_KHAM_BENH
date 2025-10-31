@@ -31,14 +31,14 @@ C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Web\obj\Debug\net8.
 C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Web\obj\Debug\net8.0\QuanLyKhamBenh.Web.pdb
 C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Web\obj\Debug\net8.0\QuanLyKhamBenh.Web.genruntimeconfig.cache
 C:\Users\DELL\source\repos\QuanLyKhamBenh.Api\QuanLyKhamBenh.Web\obj\Debug\net8.0\ref\QuanLyKhamBenh.Web.dll
-C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\appsettings.Development.json
-C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\appsettings.json
-C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Web.staticwebassets.endpoints.json
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Api.deps.json
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Api.runtimeconfig.json
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Api.staticwebassets.endpoints.json
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Api.exe
+C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\appsettings.json
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Web.staticwebassets.runtime.json
+C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Web.staticwebassets.endpoints.json
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Web.exe
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Web.deps.json
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Web.runtimeconfig.json
@@ -46,6 +46,8 @@ C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\Qu
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\QuanLyKhamBenh.Web.pdb
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\BCrypt.Net-Next.dll
+C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\Microsoft.Data.SqlClient.dll
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.dll
@@ -127,7 +129,6 @@ C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\obj\Debug\net8.0\st
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\obj\Debug\net8.0\QuanLyKh.63943639.Up2Date
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\obj\Debug\net8.0\QuanLyKhamBenh.Web.dll
 C:\Users\DELL\source\repos\QuanLyKhamBenh\QuanLyKhamBenh.Web\obj\Debug\net8.0\refint\QuanLyKhamBenh.Web.dll

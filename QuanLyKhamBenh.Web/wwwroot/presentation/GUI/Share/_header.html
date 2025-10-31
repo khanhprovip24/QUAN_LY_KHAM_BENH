@@ -1,0 +1,41 @@
+<!-- Header -->
+<header class="bg-white shadow-sm sticky top-0 z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <!-- Logo and Brand -->
+            <a href="/PresentationLayer/GUI/home.html" class="flex items-center space-x-2">
+                 <svg class="w-10 h-10 text-red-600" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8zm4.5-12.5L12 12l-4.5-4.5L9.5 5l2.5 2.5L14.5 5zM5 9.5l2.5 2.5L5 14.5zm14 0l-2.5 2.5L19 14.5zm-7 7l-2.5-2.5L7.5 19l4.5 4.5L16.5 19l-2.5-2.5z"/></svg>
+                <span class="text-xl font-bold text-gray-800">UMBRELLA CORP</span>
+            </a>
+
+            <!-- Weather and Date -->
+            <div class="hidden md:flex items-center space-x-4 text-sm text-gray-600">
+                <div class="text-right">
+                    <p id="current-date" class="font-semibold"></p>
+                    <p id="current-time"></p>
+                </div>
+                <div class="flex items-center">
+                    <span id="weather-icon" class="text-2xl"></span>
+                    <span id="weather-temp" class="font-semibold text-lg ml-2"></span>
+                </div>
+            </div>
+
+            <!-- User Info and Logout -->
+            <div class="flex items-center space-x-4">
+                <a href="Page/profile.html" title="Thông tin cá nhân" class="relative group">
+                    <span id="welcome-user" class="text-gray-700 font-medium"></span>
+                </a>
+                <button id="logout-button" class="flex items-center px-3 py-2 border border-transparent text-sm font-medium rounded-md text-red-600 bg-red-100 hover:bg-red-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 z-10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4 mr-2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" x2="9" y1="12" y2="12"/></svg>
+                    Đăng xuất
+                </button>
+            </div>
+        </div>
+         <!-- Navigation -->
+        <nav class="hidden md:flex justify-center items-center h-12 border-t">
+            <a href="home.html" class="nav-link text-gray-700 hover:text-blue-600 px-4 py-2 font-medium">Trang chủ 🏠</a>
+            <a href="Page/appointments.html" class="nav-link text-gray-700 hover:text-blue-600 px-4 py-2 font-medium">Lịch hẹn 📆</a>
+            <a href="Page/notifications.html" class="nav-link text-gray-700 hover:text-blue-600 px-4 py-2 font-medium">Thông báo 🔔</a>
+        </nav>
+    </div>
+</header>

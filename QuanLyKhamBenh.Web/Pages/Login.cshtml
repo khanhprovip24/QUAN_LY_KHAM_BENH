@@ -1,4 +1,32 @@
 ﻿@page
 @model QuanLyKhamBenh.Web.Pages.LoginModel
-@{
+@* Thêm tag helper để sử dụng asp-for và asp-validation-summary *@
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<section class="login-container" style="max-width:420px;margin:4rem auto;padding:2rem;border:1px solid #e1e1e1;border-radius:8px;">
+    <h2 style="margin-bottom:1rem;">Sign in</h2>
+
+    @* Chuyển sang form post của Razor Pages. Bỏ id và novalidate *@
+    <form method="post">
+        @* Hiển thị lỗi chung (ví dụ: "Login failed") từ server *@
+        <div asp-validation-summary="ModelOnly" role="alert" style="color:#b00020; margin-bottom: 1rem;"></div>
+
+        <p style="margin-bottom:.25rem;font-size:.9rem;color:#444;">Phone (for Patient/Doctor)</p>
+        <input asp-for="Input.Phone" type="text" placeholder="Enter phone" class="input" style="width:100%;padding:.5rem;margin-bottom:.75rem;border:1px solid #ccc;border-radius:4px;" />
+
+        <p style="margin-bottom:.25rem;font-size:.9rem;color:#444;">Username (for Admin)</p>
+        <input asp-for="Input.Username" type="text" placeholder="Enter username" class="input" style="width:100%;padding:.5rem;margin-bottom:.75rem;border:1px solid #ccc;border-radius:4px;" />
+
+        <p style="margin-bottom:.25rem;font-size:.9rem;color:#444;">Password</p>
+        <input asp-for="Input.Password" type="password" placeholder="Enter password" class="input" style="width:100%;padding:.5rem;margin-bottom:1rem;border:1px solid #ccc;border-radius:4px;" />
+        @* Hiển thị lỗi cụ thể cho trường Password (ví dụ: "Password is required") *@
+        <span asp-validation-for="Input.Password" style="color:#b00020; display: block; margin-bottom: 1rem;"></span>
+
+        <button type="submit" style="width:100%;padding:.6rem;background:#0078d4;color:white;border:none;border-radius:4px;cursor:pointer;">Sign in</button>
+    </form>
+</section>
+
+@* Section Scripts để thêm các script validation của client-side nếu cần *@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
 }

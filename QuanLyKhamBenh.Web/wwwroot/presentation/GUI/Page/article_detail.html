@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Bài Viết | UMBRELLA CORP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <div class="flex flex-col min-h-screen">
+        <!-- Header Placeholder -->
+        <div id="header-placeholder"></div>
+
+        <!-- Main Content -->
+        <main class="flex-grow p-4 sm:p-6 lg:p-8">
+            <div class="max-w-4xl mx-auto">
+                <div id="article-content" class="bg-white p-8 rounded-xl shadow-md">
+                    <!-- Article content will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Placeholder -->
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="../../Js/main.js"></script>
+    <script src="../Js/articles.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const articleContent = document.getElementById('article-content');
+            const urlParams = new URLSearchParams(window.location.search);
+            const articleId = parseInt(urlParams.get('id'));
+
+            if (articleId) {
+                const article = articles.find(a => a.id === articleId);
+
+                if (article) {
+                    // Update the page title
+                    document.title = article.title + " | UMBRELLA CORP";
+                    // Insert the full content of the article
+                    articleContent.innerHTML = article.full_content;
+                } else {
+                    // Article not found
+                    articleContent.innerHTML = `
+                        <h1 class="text-3xl font-bold text-red-600 mb-4">Lỗi: Không tìm thấy bài viết</h1>
+                        <p class="text-lg text-gray-700">Bài viết bạn đang tìm kiếm không tồn tại hoặc đã bị xóa. Vui lòng quay lại trang chuyên mục để xem các bài viết khác.</p>
+                        <a href="health_articles.html" class="mt-6 inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">Quay lại</a>
+                    `;
+                }
+            } else {
+                // No ID provided
+                articleContent.innerHTML = `
+                    <h1 class="text-3xl font-bold text-red-600 mb-4">Lỗi: URL không hợp lệ</h1>
+                    <p class="text-lg text-gray-700">Không có ID bài viết nào được cung cấp trong địa chỉ URL. Vui lòng chọn một bài viết từ trang chuyên mục.</p>
+                    <a href="health_articles.html" class="mt-6 inline-block bg-blue-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">Quay lại</a>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

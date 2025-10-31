@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Quản Trị - UMBRELLA CORP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .admin-menu a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: #374151;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+        .admin-menu a:hover {
+            background-color: #f3f4f6;
+            border-left-color: #3b82f6;
+            color: #1f2937;
+        }
+        .admin-menu h3 {
+            padding: 1rem 1.5rem;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #111827;
+        }
+        .admin-menu .separator {
+            border-top: 1px solid #e5e7eb;
+            margin: 1rem 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div id="header-placeholder"></div>
+
+    <div class="flex">
+        <!-- Left Sidebar -->
+        <aside class="w-64 bg-white shadow-md min-h-screen admin-menu">
+            <nav>
+                <h3>Dashboard</h3>
+                <a href="#dashboard">Dashboard</a>
+                <div class="separator"></div>
+
+                <h3>Lịch khám bệnh</h3>
+                <a href="#thu-tu-kham">Thứ tự khám</a>
+                <a href="#sap-xep-thu-tu">Sắp xếp thứ tự</a>
+                <a href="#lich-hen">Lịch hẹn</a>
+                <div class="separator"></div>
+
+                <h3>Quản trị viên</h3>
+                <a href="#chuyen-khoa">Chuyên khoa</a>
+                <a href="#bac-si">Bác sĩ</a>
+                <a href="#benh-nhan">Bệnh nhân</a>
+                <a href="#dich-vu">Dịch vụ</a>
+                <div class="separator"></div>
+
+                <h3>Khám chữa bệnh</h3>
+                <a href="#phac-do">Phác đồ điều trị</a>
+                <a href="#benh-an">Bệnh án</a>
+                <div class="separator"></div>
+
+                <h3>Cá nhân</h3>
+                <a href="#">Thông tin cá nhân</a>
+                <a href="#">Bảo mật</a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main id="main-content" class="flex-1 p-8">
+            <!-- Content will be loaded here -->
+        </main>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../Js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mainContent = document.getElementById('main-content');
+
+            const loadContent = (page) => {
+                fetch(page)
+                    .then(response => response.text())
+                    .then(data => {
+                        mainContent.innerHTML = data;
+                        // Re-run scripts from the loaded content
+                        const scripts = mainContent.querySelectorAll('script');
+                        scripts.forEach(script => {
+                            const newScript = document.createElement('script');
+                            newScript.innerHTML = script.innerHTML;
+                            mainContent.appendChild(newScript);
+                        });
+                    });
+            };
+
+            loadContent('Admin_page/dashboard.html');
+
+            // Add click listener to dashboard link
+            const dashboardLink = document.querySelector('.admin-menu a[href="#dashboard"]');
+            dashboardLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('dashboard.html');
+            });
+
+            const sapXepThuTuLink = document.querySelector('.admin-menu a[href="#sap-xep-thu-tu"]');
+            sapXepThuTuLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/queue_admin.html');
+            });
+
+            const thuTuKhamLink = document.querySelector('.admin-menu a[href="#thu-tu-kham"]');
+            thuTuKhamLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/thu_tu_kham.html');
+            });
+
+            const lichHenLink = document.querySelector('.admin-menu a[href="#lich-hen"]');
+            lichHenLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/lich_hen.html');
+            });
+
+            const chuyenKhoaLink = document.querySelector('.admin-menu a[href="#chuyen-khoa"]');
+            chuyenKhoaLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/chuyen_khoa.html');
+            });
+
+            const bacSiLink = document.querySelector('.admin-menu a[href="#bac-si"]');
+            bacSiLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/bac_si.html');
+            });
+
+            const benhNhanLink = document.querySelector('.admin-menu a[href="#benh-nhan"]');
+            benhNhanLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/benh_nhan.html');
+            });
+
+            const dichVuLink = document.querySelector('.admin-menu a[href="#dich-vu"]');
+            dichVuLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/dich_vu.html');
+            });
+
+            const phacDoLink = document.querySelector('.admin-menu a[href="#phac-do"]');
+            phacDoLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/phac_do.html');
+            });
+
+            const benhAnLink = document.querySelector('.admin-menu a[href="#benh-an"]');
+            benhAnLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                loadContent('Admin_page/benh_an.html');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chuyên Trang Sức Khỏe | UMBRELLA CORP</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+    <div class="flex flex-col min-h-screen">
+        <!-- Header Placeholder -->
+        <div id="header-placeholder"></div>
+
+        <!-- Main Content -->
+        <main class="flex-grow p-4 sm:p-6 lg:p-8">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <h1 class="text-4xl font-bold text-gray-900">Chuyên Trang Sức Khỏe</h1>
+                    <p class="mt-2 text-lg text-gray-600">Cập nhật những thông tin và bài viết mới nhất về sức khỏe và y học.</p>
+                </div>
+
+                <!-- Articles Grid -->
+                <div id="articles-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Article cards will be inserted here by JavaScript -->
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer Placeholder -->
+        <div id="footer-placeholder"></div>
+    </div>
+
+    <script src="../../Js/main.js"></script>
+    <script src="../Js/articles.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const grid = document.getElementById('articles-grid');
+            
+            articles.forEach(article => {
+                const articleCard = `
+                    <a href="article_detail.html?id=${article.id}" class="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+                        <img class="h-48 w-full object-cover" src="${article.image}" alt="${article.title}">
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-2">${article.title}</h3>
+                            <p class="text-gray-600 text-sm">${article.summary}</p>
+                        </div>
+                    </a>
+                `;
+                grid.innerHTML += articleCard;
+            });
+        });
+    </script>
+</body>
+</html>

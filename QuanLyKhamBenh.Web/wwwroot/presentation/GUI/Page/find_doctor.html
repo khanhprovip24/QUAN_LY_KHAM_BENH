@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tìm Bác Sĩ - Chuyên Gia | UMBRELLA CORP</title>
+    <!-- Tích hợp Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f3f4f6; /* Màu nền xám nhẹ */
+        }
+        .filter-dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 0.5rem;
+            margin-top: 0.5rem;
+            padding: 0.5rem 0;
+        }
+        .filter-dropdown a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: left;
+        }
+        .filter-dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown-container:hover .filter-dropdown {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 p-8">
+
+    <div id="header-placeholder"></div>
+
+    <div class="max-w-7xl mx-auto">
+        <!-- Search Filters Section --><div class="bg-white p-6 rounded-xl shadow-lg mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-7 gap-4 mb-4">
+                <!-- Dropdown 1: Lựa chọn cơ sở --><div class="relative dropdown-container md:col-span-1">
+                    <button class="w-full flex items-center justify-between px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <span>Lựa chọn cơ sở</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                    <!-- <div class="filter-dropdown">
+                        <a href="#">Cơ sở 1</a>
+                        <a href="#">Cơ sở 2</a>
+                    </div> --></div>
+                <!-- Dropdown 2: Yêu cầu chuyên môn --><div class="relative dropdown-container md:col-span-1">
+                    <button class="w-full flex items-center justify-between px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
+                            <span>Yêu cầu chuyên môn</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                </div>
+                <!-- Dropdown 3: Ngôn ngữ --><div class="relative dropdown-container md:col-span-1">
+                    <button class="w-full flex items-center justify-between px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 018.672 1.94M6 18L3 16v-4m5-4l7 4m0 0l5 3m0-3h-6M2 17l5 3m0 0l5 3v-3m0-3l-7-4m-7 4l5 3v-3m0-3l-5-3h6m0 0l7 4m-7 4h12l5 3v-3m-5-3l-7-4m-7-4v3m12-3v3M20 17l-5 3v-3M12 4.02L20 4.02"/></svg>
+                            <span>Ngôn ngữ</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                </div>
+                <!-- Dropdown 4: Nghề nghiệp --><div class="relative dropdown-container md:col-span-1">
+                    <button class="w-full flex items-center justify-between px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.535 23.535 0 0112 15c-3.048 0-5.908-.684-8.599-1.85a.75.75 0 00-.916 1.107 8.01 8.01 0 0017.03 0 .75.75 0 00-.916-1.107zM12 11a3 3 0 110-6 3 3 0 010 6z"/></svg>
+                            <span>Nghề nghiệp</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                </div>
+                <!-- Dropdown 5: Học hàm --><div class="relative dropdown-container md:col-span-1">
+                    <button class="w-full flex items-center justify-between px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 14v4m-3-4h6M4 7V4a2 2 0 012-2h4l2 2h4a2 2 0 012 2v10a2 2 0 01-2 2h-6l-2 2H6a2 2 0 01-2-2v-7z"/></svg>
+                            <span>Học hàm</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                </div>
+                <!-- Dropdown 6: Học vị --><div class="relative dropdown-container md:col-span-1">
+                    <button class="w-full flex items-center justify-between px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.002h.01M17 10h.01M6 10h.01M12 14h.01M17 18h.01M6 18h.01M9.5 3.5l-6.5 4.5 6.5 4.5 6.5-4.5-6.5-4.5z"/></svg>
+                            <span>Học vị</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                </div>
+                <!-- Search Button (right-aligned for small screens) --><div class="md:col-span-1 flex items-center justify-end">
+                    <!-- Placeholder for alignment --></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-7 gap-4">
+                <!-- Dropdown 7: Số điểm đánh giá --><div class="relative dropdown-container md:col-span-2">
+                    <button class="w-full flex items-center justify-between px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-500">
+                        <div class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-yellow-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.324 1.118l1.519 4.674c.3.921-.755 1.688-1.539 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.784.57-1.838-.197-1.539-1.118l1.519-4.674a1 1 0 00-.324-1.118L2.285 9.409c-.783-.57-.381-1.81.588-1.81h4.915a1 1 0 00.95-.69l1.519-4.674z"/></svg>
+                            <span>Số điểm đánh giá</span>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"/></svg>
+                    </button>
+                </div>
+                <!-- Input: Nhập tên bác sĩ/chuyên gia --><div class="md:col-span-3">
+                    <input type="text" placeholder="Nhập tên bác sĩ/chuyên gia..." class="w-full px-4 py-2 border rounded-lg bg-gray-50 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <!-- Search Button --><div class="md:col-span-2">
+                    <button class="w-full px-4 py-2 bg-teal-500 text-white font-semibold rounded-lg hover:bg-teal-600 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-teal-400">
+                        Tìm kiếm
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section Title --><div class="mb-6">
+            <h2 class="text-3xl font-bold text-gray-900 border-b-2 border-teal-500 pb-2 inline-block">Danh sách Bác sĩ - Chuyên gia</h2>
+        </div>
+
+        <!-- Doctor List - Placeholder (Sẽ hiển thị danh sách bác sĩ ở đây) --><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Example Doctor Card (có thể lặp lại bằng JS) --><!-- <div class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4">
+                <img class="h-20 w-20 rounded-full object-cover" src="https://via.placeholder.com/80" alt="Bác sĩ">
+                <div>
+                    <h3 class="text-lg font-semibold text-gray-900">Dr. Nguyễn Văn A</h3>
+                    <p class="text-sm text-gray-600">Chuyên khoa: Tim mạch</p>
+                    <div class="flex items-center mt-1">
+                        <span class="text-yellow-400">⭐</span>
+                        <span class="text-sm text-gray-700 ml-1">4.8 (120 đánh giá)</span>
+                    </div>
+                </div>
+            </div> --></div>
+    </div>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="../../Js/main.js"></script>
+</body>
+</html>
